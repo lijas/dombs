@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,6 +34,12 @@
 			<Add option="-Wall" />
 			<Add directory="include" />
 		</Compiler>
+		<Unit filename="BallJoint.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="BallJoint.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Body.cpp">
 			<Option target="Debug" />
 		</Unit>
@@ -44,15 +52,17 @@
 		<Unit filename="Constraint.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="DombsLoop.cpp">
+		<Unit filename="DombsMain.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="DombsLoop.h">
+		<Unit filename="DombsMain.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="include/Solver.h" />
 		<Unit filename="main.cpp">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="src/Solver.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

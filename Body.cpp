@@ -16,7 +16,8 @@ Body::Body(mat iq, mat idq){
 }
 
 void Body::setCoords(mat iq){
-    if(iq.rows() == 7 && iq.cols() == 1)
+
+    if(iq.n_rows == 7 && iq.n_cols == 1)
         q = iq;
     else
         return;

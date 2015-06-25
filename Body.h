@@ -1,5 +1,3 @@
-#include <armadillo>
-
 using namespace arma;
 
 class Body{
@@ -15,6 +13,8 @@ public:
 
     mat getq(){return q;};
     mat getdq(){return dq;};
+    mat getPos(){return q.rows(1,3);};
+
 private:
 
     mat q;
