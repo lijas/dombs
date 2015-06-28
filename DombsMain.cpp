@@ -1,4 +1,5 @@
 #include "DombsMain.h"
+#include "Constraint.h"
 #include <Solver.h>
 
 DombsMain::initilize(string infileName){
@@ -43,9 +44,24 @@ DombsMain::runner(){
 
 void DombsMain::dombsfunk(mat q, double t){
 
+    mat Cq = zeros<mat>(nconstraints, ndof));
+    int cConstRow = 0;
     for(int i=0; i<constraints.length(); i++){
-        mat c = constraints.at(i).getCq();
+        Constratint *cconst = &constraints.at(i);
+        mat c = cconst->getCq();
+
+        uvec assemCols = cconst->b1->getAssemDofs();
+
+        //Number of constraint equation for current constratnt
+        int nConstEq = constraints.at(i).cqrows;
+        Cq.elem(,assemCols)
+        Cq(span(cConstRow, cConstRow+nConstEq), s)
 
     }
-
 }
+
+
+
+
+
+

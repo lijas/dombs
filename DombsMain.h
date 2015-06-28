@@ -17,7 +17,7 @@ private:
 
     Solver *solver;
 
-    int nbodies, nconstraints;
+    int nbodies, nconstraints, ndof;
 
     void readInputFile();
     void runner();
@@ -25,10 +25,5 @@ private:
 
     void dombsfunk(mat q, double d);
 };
-
-namespace dombs{
-
-
-}
 
 #endif // DOMBSMAIN_H_INCLUDED
