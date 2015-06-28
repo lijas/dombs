@@ -1,4 +1,6 @@
+# Code::Blocks
 *.layout
+*.depend
 
 # Compiled Object files
 *.slo
