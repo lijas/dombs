@@ -58,10 +58,12 @@
 		<Unit filename="DombsMain.h">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="include/Ode4.h" />
 		<Unit filename="include/Solver.h" />
 		<Unit filename="main.cpp">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="src/Ode4.cpp" />
 		<Unit filename="src/Solver.cpp" />
 		<Extensions>
 			<code_completion />

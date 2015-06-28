@@ -15,6 +15,7 @@ public:
     mat getdq(){return dq;};
     mat getPos(){return q.rows(1,3);};
 
+    int getid(){return id;};
 private:
 
     int id;
