@@ -17,6 +17,8 @@ public:
 
 private:
 
+    int id;
+
     mat q;
 	mat dq;
 

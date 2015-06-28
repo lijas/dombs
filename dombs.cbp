@@ -35,10 +35,10 @@
 			<Add directory="include" />
 		</Compiler>
 		<Unit filename="BallJoint.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="BallJoint.h">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Body.cpp">
 			<Option target="Debug" />
@@ -47,16 +47,16 @@
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Constraint.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Constraint.h">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="DombsMain.cpp">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="DombsMain.h">
-			<Option target="&lt;{~None~}&gt;" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="include/Solver.h" />
 		<Unit filename="main.cpp">

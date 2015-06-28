@@ -15,7 +15,7 @@ private:
     vector<Body> bodies;
     vector<Constraint> constraints;
 
-    Solver solver;
+    Solver *solver;
 
     int nbodies, nconstraints;
 
@@ -26,5 +26,9 @@ private:
     void dombsfunk(mat q, double d);
 };
 
+namespace dombs{
+
+
+}
 
 #endif // DOMBSMAIN_H_INCLUDED
