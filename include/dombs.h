@@ -5,7 +5,8 @@
 namespace dombs
 {
     int const DOFS_PER_BODY;
-    mat getA(vec EulerParameters);
+    mat getA(vec EulerParameters); // regular rotation matrix
+    mat getA(vec EulerParameters, int derivative); // derivative of the rotation matrix
     mat getG(vec EulerParameters);
 };
 
