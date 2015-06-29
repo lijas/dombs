@@ -6,6 +6,7 @@
 
 using namespace std;
 using namespace arma;
+using namespace dombs;
 
 int main(){
 

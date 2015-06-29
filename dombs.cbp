@@ -60,11 +60,13 @@
 		</Unit>
 		<Unit filename="include/Ode4.h" />
 		<Unit filename="include/Solver.h" />
+		<Unit filename="include/dombs.h" />
 		<Unit filename="main.cpp">
 			<Option target="Debug" />
 		</Unit>
 		<Unit filename="src/Ode4.cpp" />
 		<Unit filename="src/Solver.cpp" />
+		<Unit filename="src/dombs.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

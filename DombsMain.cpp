@@ -56,7 +56,6 @@ void DombsMain::dombsfunk(mat q, double t){
         int nConstEq = constraints.at(i).cqrows;
         Cq.elem(,assemCols)
         Cq(span(cConstRow, cConstRow+nConstEq), s)
-
     }
 }
 
