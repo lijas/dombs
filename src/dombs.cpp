@@ -1,4 +1,8 @@
 #include "dombs.h"
+#include <vector>
+#include <armadillo>
+
+using namespace arma;
 
 namespace dombs
 {
@@ -81,8 +85,23 @@ namespace dombs
           << -EulerParameters(2) << EulerParameters(3) << EulerParameters(0) << -EulerParameters(1) << endr
           << -EulerParameters(3) << -EulerParameters(2) << EulerParameters(1) << EulerParameters(0) << endr;
 
-        G = 2*E;;
+        G = 2*E;
         return G;
 
     };
+
+    mat getMassMatrix(vector<Body> *bodies){
+
+        nbodies = bodies->length();
+        mat bodiesMassMatrix = zeros<mat>(nbodies*DOFS_PER_BODY, nbodies*DOFS_PER_BODY);
+        for(int i=0; i<nbodies; i++){
+            Body *cb = &bodies.at(i);
+            mat mrr = eye<mat>(3,3)*cb->getMass();
+            mat mtt = getG(cb->getep()).t() * cb->getMomentInertia() * getG(cb->getep());
+
+            bodiesMassMatrix(cb->getDofsSpanPos(),cb->getDofsSpanPos()) = mrr;
+            bodiesMassMatrix(cb->getDofsSpanEp(),cb->getDofsSpanEp()) = mtt;
+        }
+        return bodiesMassMatrix;
+    }
 }

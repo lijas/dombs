@@ -3,17 +3,21 @@
 
 #include <string>
 #include <vector>
+#include "Body.h"
+#include "Constraint.h"
+#include <Solver.h>
 
 class DombsMain {
 
 public:
-    void initilize(string fileName);
+    void initilize(std::string fileName);
 
 private:
 
-    string fileName;
-    vector<Body> bodies;
-    vector<Constraint> constraints;
+    std::string fileName;
+
+    std::vector<Body> bodies;
+    std::vector<Constraint*> constraints;
 
     Solver *solver;
 
@@ -23,7 +27,7 @@ private:
     void runner();
     void postProcess();
 
-    void dombsfunk(mat q, double d);
+    void (*dombsfunk)(arma::vec q, double d);
 };
 
 #endif // DOMBSMAIN_H_INCLUDED

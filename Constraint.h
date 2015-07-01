@@ -12,7 +12,7 @@ public:
     virtual void getC()  = 0;
     virtual void getQc() = 0;
 
-    uvec getAssemDofs();
+    arma::uvec getAssemDofs();
 
 protected:
     int cqrows, cqcols;

@@ -14,5 +14,5 @@ uvec Constraint::getAssemDofs(){
     for(int i=b2->getid()*7; i<b2->getid()*7 + 7; i++)
         dofs << i;
 
-    return udofs;
+    return dofs;
 }

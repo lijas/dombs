@@ -8,8 +8,9 @@ class Ode4 : public Solver
 {
     public:
         Ode4();
-        virtual ~Ode4();
+        ~Ode4();
 
+        void runSolver(void (*f)(arma::vec, double));
     protected:
     private:
 };

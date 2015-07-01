@@ -11,7 +11,7 @@ Ode4::~Ode4()
 }
 
 
-void Ode4::runSolver(void (*f)(mat q, double t)){
+void Ode4::runSolver(void (*f)(vec q, double t)){
 
 //Check endtime smaller then start time
 //ERROR HANDLING STUFF

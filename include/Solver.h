@@ -5,15 +5,14 @@
 class Solver
 {
     public:
-        Solver();
-        virtual void runSolver(void (*f)(vec, double)) = 0;
+        virtual void runSolver(void (*f)(arma::vec, double)) = 0;
 
         void setTimeSpan(double st, double et){startTime = st; endTime = et;};
         void setnsteps(double ns){nsteps = ns;};
-        void setInitialCondition(vec ic){initialCondition = ic;};
+        void setInitialCondition(arma::vec ic){initialCondition = ic;};
     private:
         double startTime, endTime, nsteps;
-        vec initialCondition;
+        arma::vec initialCondition;
 };
 
 #endif // SOLVER_H
