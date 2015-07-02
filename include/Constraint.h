@@ -7,12 +7,15 @@ class Constraint {
 
 public:
 
-    virtual void getCq() = 0;
-    virtual void getCt() = 0;
-    virtual void getC()  = 0;
-    virtual void getQc() = 0;
+    virtual arma::mat getCq() = 0;
+    virtual arma::mat getCt() = 0;
+    virtual arma::mat getC()  = 0;
+    virtual arma::mat getQc() = 0;
 
     arma::uvec getAssemDofs();
+
+    Body* getBody1(){return b1;};
+    Body* getBody2(){return b2;};
 
 protected:
     int cqrows, cqcols;

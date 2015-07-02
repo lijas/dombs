@@ -16,7 +16,7 @@ private:
 
     std::string fileName;
 
-    std::vector<Body> bodies;
+    std::vector<Body*> bodies;
     std::vector<Constraint*> constraints;
 
     Solver *solver;
@@ -27,7 +27,7 @@ private:
     void runner();
     void postProcess();
 
-    void (*dombsfunk)(arma::vec q, double d);
+    arma::vec dombsfunk(arma::vec q, double d);
 };
 
 #endif // DOMBSMAIN_H_INCLUDED

@@ -10,7 +10,7 @@ class Ode4 : public Solver
         Ode4();
         ~Ode4();
 
-        void runSolver(void (*f)(arma::vec, double));
+        void runSolver(arma::vec (*f)(arma::vec, double));
     protected:
     private:
 };

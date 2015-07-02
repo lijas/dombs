@@ -34,39 +34,21 @@
 			<Add option="-Wall" />
 			<Add directory="include" />
 		</Compiler>
-		<Unit filename="BallJoint.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="BallJoint.h">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="Body.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="Body.h">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="Constraint.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="Constraint.h">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="DombsMain.cpp">
-			<Option target="Debug" />
-		</Unit>
-		<Unit filename="DombsMain.h">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="include/BallJoint.h" />
+		<Unit filename="include/Body.h" />
+		<Unit filename="include/Constraint.h" />
+		<Unit filename="include/DombsMain.h" />
 		<Unit filename="include/Ode4.h" />
 		<Unit filename="include/Solver.h" />
 		<Unit filename="include/dombs.h" />
-		<Unit filename="main.cpp">
-			<Option target="Debug" />
-		</Unit>
+		<Unit filename="src/BallJoint.cpp" />
+		<Unit filename="src/Body.cpp" />
+		<Unit filename="src/Constraint.cpp" />
+		<Unit filename="src/DombsMain.cpp" />
 		<Unit filename="src/Ode4.cpp" />
 		<Unit filename="src/Solver.cpp" />
 		<Unit filename="src/dombs.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

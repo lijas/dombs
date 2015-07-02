@@ -1,16 +1,20 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
+#include <armadillo>
 
-class Solver
-{
+class Solver{
+
     public:
-        virtual void runSolver(void (*f)(arma::vec, double)) = 0;
+        Solver();
+        ~Solver();
+
+        virtual void runSolver(arma::vec (*f)(arma::vec, double)) = 0;
 
         void setTimeSpan(double st, double et){startTime = st; endTime = et;};
         void setnsteps(double ns){nsteps = ns;};
         void setInitialCondition(arma::vec ic){initialCondition = ic;};
-    private:
+    protected:
         double startTime, endTime, nsteps;
         arma::vec initialCondition;
 };

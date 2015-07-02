@@ -8,6 +8,10 @@ Body::Body(){
 	q.zeros(); dq.zeros();
 }
 
+Body::Body(double a){
+	a = 2;
+}
+
 Body::Body(vec iq, vec idq){
 	q = iq;
 	dq = idq;

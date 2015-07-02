@@ -6,6 +6,7 @@ class Body{
 
 public:
 	Body();
+	Body(double a);
 	Body(arma::vec iq, arma::vec idq);
 
 	void setCoords(arma::vec iq);

@@ -4,7 +4,8 @@
 class BallJoint : Constraint{
 
 public:
-
+    mat getCq();
+    //osv....
 
 private:
 
