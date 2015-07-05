@@ -6,12 +6,18 @@ class Body{
 
 public:
 	Body();
-	Body(double a);
+	Body(int iid);
 	Body(arma::vec iq, arma::vec idq);
+	Body(int iid, arma::vec iq, arma::vec idq);
 
 	void setCoords(arma::vec iq);
+    void setId(int ii){id = ii; evalDofs();};
+    void setDensity(double);
 
     double getMass();
+    int getId(){return id;};
+
+
     arma::mat getMomentInertia();
 
     arma::vec getq(){return q;};
@@ -19,14 +25,16 @@ public:
     arma::vec getPos(){return q.rows(0,2);};
     arma::vec getep(){return q.rows(3,6);};
 
+    arma::uvec getdofs(){return dofs;};
+    arma::uvec getPosdofs(){return posdofs;};
+    arma::uvec getEpdofs(){return epdofs;};
+
     //Get the span for all dofs for this body
     arma::span getDofsSpan(){return arma::span(id*7,id*7+6);};
     //Get the span for the pos dofs for this body
     arma::span getDofsSpanPos(){return arma::span(id*7,id*7+2);};
     //Get the span for the euler parameters dofs for this body
     arma::span getDofsSpanEp(){return arma::span(id*7+3,id*7+6);};
-
-    int getid(){return id;};
 private:
 
     int id;
@@ -34,7 +42,12 @@ private:
     arma::vec q;
 	arma::vec dq;
 
-    double calculateMass();
+	arma::uvec dofs;
+	arma::uvec posdofs;
+	arma::uvec epdofs;
+
+    void calculateMass();
+    void evalDofs();
 
     double density, mass;
     arma::mat momentInertia;

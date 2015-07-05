@@ -1,16 +1,29 @@
 #ifndef BALLJOINT_H_INCLUDED
 #define BALLJOINT_H_INCLUDED
 
-class BallJoint : Constraint{
+#include <armadillo>
+#include <Constraint.h>
+#include <Body.h>
+class BallJoint : public Constraint{
 
 public:
-    mat getCq();
-    //osv....
+    BallJoint();
 
+    arma::mat getCq();
+    arma::mat getCt();
+    arma::mat getC();
+    arma::mat getQc();
+
+    void setBody1(Body *b){b1 = b;};
+    void setBody2(Body *b){b2 = b;};
+
+    void setU1(arma::vec u){u1 = u;};
+    void setU2(arma::vec u){u2 = u;};
+
+    arma::uvec getAssemDofs();
 private:
-
-    mat v1, v2;
-
+    Body *b1, *b2;
+    arma::vec u1, u2;
 };
 
 

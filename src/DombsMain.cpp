@@ -1,5 +1,10 @@
 #include "DombsMain.h"
 #include <Ode4.h>
+#include <FixBallJoint.h>
+#include <BallJoint.h>
+#include <Body.h>
+#include <EulerParameterConstraint.h>
+#include <dombs.h>
 
 using namespace std;
 using namespace arma;
@@ -17,8 +22,32 @@ void DombsMain::initilize(string infileName){
 void DombsMain::readInputFile(){
 
     //TILL EXEMPEL
-    Body *b1 = new Body;
-    bodies.push_back(b1);
+    Body b1(0);
+    Body b2(1);
+    bodies.push_back(&b1);
+//    bodies.push_back(&b2);
+
+    FixBallJoint fbj;
+    vec v(3); v << 0 << 1 << 0;
+    fbj.setU(v);
+    fbj.setBody(&b1);
+
+    BallJoint bj1;
+    bj1.setBody1(&b1);
+    bj1.setBody2(&b2);
+    bj1.setU1(v);
+    bj1.setU2(v*-1);
+
+
+    constraints.push_back(&bj1);
+//    constraints.push_back(&fbj);
+
+    EulerParameterConstraint epc1, epc2;
+    epc1.setBody(&b1);
+    epc2.setBody(&b2);
+
+    constraints.push_back(&epc1);
+//constraints.push_back(epc2);
 
     solver = new Ode4;
     solver->setTimeSpan(0,1);
@@ -26,36 +55,34 @@ void DombsMain::readInputFile(){
     //solver->setInitialCondition(ic);
 }
 
-vec funkk(vec q, double t){
-    t = 1;
-    vec v;
-    return v;
-}
-
 void DombsMain::runner(){
-    typedef vec (*funk)(vec, double);
-    funk tempfunkapa = funkk;
-    solver->runSolver(tempfunkapa);
-
+    solver->runSolver(dombsfunk);
 }
 
 vec DombsMain::dombsfunk(vec q, double t){
-    cout<<"i am here"<<endl;
-//    mat Cq = zeros<mat>(nconstraints, ndof);
-//    int cConstRow = 0;
-//    for(int i=0; i<constraints.size(); i++){
-//        Constraint *cconst = constraints.at(i);
-//        mat c = cconst->getCq();
-//
-//        uvec assemCols = cconst->getBody1()->getAssemDofs();
-//
-//        //Number of constraint equation for current constratnt
-//        int nConstEq = constraints.at(i).cqrows;
-//        Cq.elem(,assemCols)
-//        Cq(span(cConstRow, cConstRow+nConstEq), s)
-//    }
-//
-//    mat M = getMassMatrix();
+
+    mat Cq = dombs::assembleCqMatrix(constraints, ndofs);
+    mat C = dombs::assembleCMatrix(constraints);
+    mat Mb = dombs::assembleBodyMassMatrix(bodies);
+
+    double normC = norm(C);
+
+    mat L, U, P;
+    lu(L, U, P, Cq.t());
+    uvec P = arma::permutation2vec(P);
+
+    ndepC = P(span(0,ndepC-1));
+    nindepC = P(span(ndepC, ndofs-1));
+
+    double tol = 0.00001;
+    while(normc > normC){
+        Cq = dombs::assembleCqMatrix(constraints, ndofs);
+        C = dombs::assembleCMatrix(contraints);
+
+    }
+
+
+
     return q;
 }
 

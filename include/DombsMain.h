@@ -21,13 +21,13 @@ private:
 
     Solver *solver;
 
-    int nbodies, nconstraints, ndof;
+    int nbodies, nconstraints, ndofs, nindepC, ndepC;
 
     void readInputFile();
     void runner();
     void postProcess();
 
-    arma::vec dombsfunk(arma::vec q, double d);
+    static arma::vec dombsfunk(arma::vec q, double d);
 };
 
 #endif // DOMBSMAIN_H_INCLUDED

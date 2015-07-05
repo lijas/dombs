@@ -38,6 +38,8 @@
 		<Unit filename="include/Body.h" />
 		<Unit filename="include/Constraint.h" />
 		<Unit filename="include/DombsMain.h" />
+		<Unit filename="include/EulerParameterConstraint.h" />
+		<Unit filename="include/FixBallJoint.h" />
 		<Unit filename="include/Ode4.h" />
 		<Unit filename="include/Solver.h" />
 		<Unit filename="include/dombs.h" />
@@ -45,6 +47,8 @@
 		<Unit filename="src/Body.cpp" />
 		<Unit filename="src/Constraint.cpp" />
 		<Unit filename="src/DombsMain.cpp" />
+		<Unit filename="src/EulerParameterConstraint.cpp" />
+		<Unit filename="src/FixBallJoint.cpp" />
 		<Unit filename="src/Ode4.cpp" />
 		<Unit filename="src/Solver.cpp" />
 		<Unit filename="src/dombs.cpp" />
