@@ -10,7 +10,7 @@ Body::Body(){
 	dq.zeros();
 
 	density = 1;
-	calculateMass();
+	evalMassAndMomentInertia();
 
 	id = -1; //need to set id afterwards
 }
@@ -22,7 +22,7 @@ Body::Body(int iid){
 	dq.zeros();
 
     density = 1;
-	calculateMass();
+	evalMassAndMomentInertia();
 
 	id = iid; //need to set id afterwards
 	evalDofs();
@@ -33,10 +33,10 @@ Body::Body(int iid, vec iq, vec idq){
 	dq = idq;
 
     density = 1;
-	calculateMass();
+	evalMassAndMomentInertia();
 
     density = 1;
-	calculateMass();
+	evalMassAndMomentInertia();
 
 	id = iid;
 	evalDofs();
@@ -54,7 +54,7 @@ void Body::setCoords(vec iq){
 
 void Body::setDensity(double d){
     density = d;
-    calculateMass();
+    evalMassAndMomentInertia();
 }
 
 void Body::evalDofs(){

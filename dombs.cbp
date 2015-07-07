@@ -14,13 +14,11 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
-					<Add directory="../dombs" />
 				</Compiler>
 				<Linker>
-					<Add library="C:\Users\Elias\Dropbox\Personliga saker\Programmering\dombs\blas_win64_MT.lib" />
-					<Add library="C:\Users\Elias\Dropbox\Personliga saker\Programmering\dombs\lapack_win64_MT.lib" />
-					<Add directory="../dombs" />
-					<Add directory="include" />
+					<Add library="libs\blas_win32_MT.lib" />
+					<Add library="libs\lapack_win32_MT.lib" />
+					<Add directory="libs" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -41,6 +39,11 @@
 			<Add option="-Wall" />
 			<Add directory="include" />
 		</Compiler>
+		<Linker>
+			<Add library="libs\blas_win32_MT.lib" />
+			<Add library="libs\lapack_win32_MT.lib" />
+			<Add directory="libs" />
+		</Linker>
 		<Unit filename="include/BallJoint.h" />
 		<Unit filename="include/Body.h" />
 		<Unit filename="include/Constraint.h" />
