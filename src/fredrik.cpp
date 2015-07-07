@@ -1,37 +1,45 @@
 #include <armadillo>
+#include <iostream>
 
 using namespace arma;
 
+//vec NewtonRaphson(vec (*C)(vec q), mat (*Cq)(vec q), vec q){
+//    double tol = 0.0001;
+//    while (norm(C) > tol){
+//        vec dq = -solve(Cq(q),C);
+//        q = *q + dq;
+//    }
+//
+//}
+//
+//vec C(vec q){
+//    return vec A << 1 << 2 << 3 << 4 << endr;
+//}
+
+
 int main(){
 
-    vec EulerParameters;
-    EulerParameters << 1 << 1 << 1 << 1 << endr;
+    vec q(2);
 
+    q << 1 << 6 << endr;
 
-        mat E = zeros<mat>(3,4);
-        mat Ebar = zeros<mat>(3,4);
+    double *hej = q.memptr();
 
-        E << -EulerParameters(1) << EulerParameters(0) << -EulerParameters(3) << EulerParameters(2) << endr
-          << -EulerParameters(2) << EulerParameters(3) << EulerParameters(0) << -EulerParameters(1) << endr
-          << -EulerParameters(3) << -EulerParameters(2) << EulerParameters(1) << EulerParameters(0) << endr;
+    vec qq(4);
 
-        Ebar << -EulerParameters(1) << EulerParameters(0) << EulerParameters(3) << -EulerParameters(2) << endr
-             << -EulerParameters(2) << -EulerParameters(3) << EulerParameters(0) << EulerParameters(1) << endr
-             << -EulerParameters(3) << EulerParameters(2) << -EulerParameters(1) << EulerParameters(0) << endr;
+    qq << *hej << *(hej+1) << *hej << *(hej+1) << endr;
 
-        mat A = E*Ebar.t();
+    qq.print();
 
-            mat E0 = zeros<mat>(3,4);
-            mat Ebar0 = zeros<mat>(3,4);
+    int *hejsan;
 
-            E0(0,1) = 1; E0(1,2) = 1; E0(2,3) = 1;
-            Ebar0(0,1) = 1; Ebar0(1,2) = 1; Ebar0(2,3) = 1;
+    hejsan = 1;
 
-            mat Ader0 = E0*Ebar.t() + E*Ebar0.t();
+    hej = hejsan;
 
-        //Ader0.print();
+    cout << endl;
 
-        Ader0.print();
+    qq.print();
 
 
 }
