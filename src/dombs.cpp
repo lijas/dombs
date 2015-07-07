@@ -1,4 +1,5 @@
-#include "dombs.h"
+#include <dombs.h>
+#include <Body.h>
 
 using namespace std;
 using namespace arma;
@@ -99,6 +100,7 @@ namespace dombs
         for(int i=0; i<nconstraints; i++){
             Constraint *cconst = constraints->at(i);
             mat cq = cconst->getCq();
+            cq.print("cq:");
 
             uvec assemCols = cconst->getAssemDofs();
             uvec assemRows = colon(cCqRow, cCqRow + cconst->getnCqRows() - 1);

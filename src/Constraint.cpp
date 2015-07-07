@@ -1,5 +1,4 @@
-#include "Constraint.h"
-#include "Body.h"
+#include <Constraint.h>
 
 using namespace std;
 using namespace arma;

@@ -1,7 +1,7 @@
 // Copyright (C) 2008-2015 Conrad Sanderson
 // Copyright (C) 2013-2015 Ryan Curtin
 // Copyright (C) 2008-2015 NICTA (www.nicta.com.au)
-// 
+//
 // This Source Code Form is subject to the terms of the Mozilla Public
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -16,7 +16,7 @@
 #endif
 
 #if !defined(ARMA_USE_BLAS)
-//#define ARMA_USE_BLAS
+#define ARMA_USE_BLAS
 //// Comment out the above line if you don't have BLAS or a high-speed replacement for BLAS,
 //// such as OpenBLAS, GotoBLAS, Intel MKL, AMD ACML, or the Accelerate framework.
 //// BLAS is used for matrix multiplication.
@@ -26,7 +26,7 @@
 #if !defined(ARMA_USE_ARPACK)
 // #define ARMA_USE_ARPACK
 //// Uncomment the above line if you have ARPACK or a high-speed replacement for ARPACK.
-//// ARPACK is required for eigendecompositions of sparse matrices, eg. eigs_sym(), svds() 
+//// ARPACK is required for eigendecompositions of sparse matrices, eg. eigs_sym(), svds()
 #endif
 
 #if !defined(ARMA_USE_SUPERLU)
@@ -97,7 +97,7 @@
 #if defined(ARMA_USE_HDF5_ALT) && defined(ARMA_USE_WRAPPER)
   #undef  ARMA_USE_HDF5
   #define ARMA_USE_HDF5
-  
+
   // #define ARMA_HDF5_INCLUDE_DIR /usr/include/
 #endif
 

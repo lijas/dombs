@@ -1,6 +1,5 @@
 #include <BallJoint.h>
 
-
 using namespace std;
 using namespace arma;
 

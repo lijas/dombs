@@ -1,11 +1,7 @@
 #include <iostream>
 #include <armadillo>
-#include <vector>
-#include <Body.h>
 #include <string>
-#include <BallJoint.h>
-#define <FixBallJoint.h>
-#include <dombs.h>
+#include <DombsMain.h>
 
 using namespace std;
 using namespace arma;
@@ -14,8 +10,7 @@ int main(){
 
     cout << "Armadillo version: " << arma_version::as_string() << endl;
 
-    DombsMain dm;
-    dm.initilize("test");
+    dombsmain::initilize("test");
 
 	return 0;
 }

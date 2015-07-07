@@ -3,6 +3,7 @@
 
 #include <Constraint.h>
 #include <armadillo>
+#include <Body.h>
 
 class EulerParameterConstraint : public Constraint
 {

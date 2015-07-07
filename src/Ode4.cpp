@@ -1,4 +1,4 @@
-#include "Ode4.h"
+#include <Ode4.h>
 
 using namespace std;
 using namespace arma;

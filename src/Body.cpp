@@ -41,9 +41,11 @@ Body::Body(int iid, vec iq, vec idq){
 	id = iid;
 	evalDofs();
 }
-void Body::calculateMass(){
-    //density x volume bla bla
+void Body::evalMassAndMomentInertia(){
+    //Calculate momentinerta and mass using the density and shape
+    //Set to 1 for now
     mass = 1;
+    momentInertia = eye<mat>(3,3);
 }
 
 void Body::setCoords(vec iq){

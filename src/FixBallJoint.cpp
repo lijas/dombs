@@ -1,4 +1,5 @@
-#include "FixBallJoint.h"
+#include <FixBallJoint.h>
+#include <dombs.h>
 
 using namespace std;
 using namespace arma;
@@ -6,7 +7,7 @@ using namespace arma;
 FixBallJoint::FixBallJoint(){
     pos = zeros<vec>(3);
     u = pos;
-    body = null;
+    body = 0;
 
     cqrows = 3; cqcols = 7;
     ctrows = 3, ctcols = 7;
@@ -19,7 +20,7 @@ FixBallJoint::~FixBallJoint(){
 }
 
 uvec FixBallJoint::getAssemDofs(){
-    return join_vert(body->getdofs());
+    return body->getdofs();
 }
 
 mat FixBallJoint::getCq(){

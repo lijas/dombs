@@ -1,13 +1,12 @@
 #include "EulerParameterConstraint.h"
 
-
 using namespace std;
 using namespace arma;
 
 
 EulerParameterConstraint::EulerParameterConstraint()
 {
-    body = null;
+    body = 0;
 
     cqrows = 1; cqcols = 4;
     ctrows = 1, ctcols = 4;
@@ -25,7 +24,7 @@ uvec EulerParameterConstraint::getAssemDofs(){
 }
 
 mat EulerParameterConstraint::getCq(){
-    return ones<mat>(cqrows, cqcols);
+    return body->getep().t()*2;
 }
 
 mat EulerParameterConstraint::getCt(){
@@ -33,7 +32,7 @@ mat EulerParameterConstraint::getCt(){
 }
 
 mat EulerParameterConstraint::getC(){
-    return body->getep().t() * body->getep();
+    return (body->getep().t() * body->getep()) - 1;
 }
 
 mat EulerParameterConstraint::getQc(){

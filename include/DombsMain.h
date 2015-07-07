@@ -3,31 +3,33 @@
 
 #include <string>
 #include <vector>
-#include "Body.h"
-#include "Constraint.h"
+#include <Body.h>
+#include <Constraint.h>
 #include <Solver.h>
 
-class DombsMain {
+namespace dombsmain {
 
-public:
+    //Store the inputfile name
+    extern std::string inputfileName;
+    //A vector containing that points to all bodies
+    extern std::vector<Body*> bodies;
+    //A vector containing that points to all constraints
+    extern std::vector<Constraint*> constraints;
+    //A solver that points to the current solver that is used, ode4, ode3 etc
+    extern Solver *solver;
+    //Some variables that I think we can init when reading the input file. They will probobly not change
+    extern unsigned int nbodies, nconstraints, ndofs, nindepC, ndepC;
+
+    //The main functions that is called from main.cpp
     void initilize(std::string fileName);
-
-private:
-
-    std::string fileName;
-
-    std::vector<Body*> bodies;
-    std::vector<Constraint*> constraints;
-
-    Solver *solver;
-
-    int nbodies, nconstraints, ndofs, nindepC, ndepC;
-
+    //Reads the input file
     void readInputFile();
+    //Calls the solver to start running (Överflöding funtion kanske)
     void runner();
+    //Oklart om vi behöver ddenna
     void postProcess();
 
-    static arma::vec dombsfunk(arma::vec q, double d);
-};
-
+    //Ultimate dombs function of doom
+    arma::vec dombsfunk(arma::vec q, double d);
+}
 #endif // DOMBSMAIN_H_INCLUDED
