@@ -19,6 +19,8 @@ namespace dombsmain {
     extern Solver *solver;
     //Some variables that I think we can init when reading the input file. They will probobly not change
     extern unsigned int nbodies, nconstraints, ndofs, nindepC, ndepC;
+    //
+    extern arma::vec all_qq;
 
     //The main functions that is called from main.cpp
     void initilize(std::string fileName);

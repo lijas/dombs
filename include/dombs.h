@@ -25,6 +25,8 @@ namespace dombs
     //Makes the permuation matrix from lu-factorisation in to a vector
     arma::uvec permutation2vec(arma::mat p);
     //Calculates the total number of constraints equaitons
+    arma::vec getqq(std::vector<Body*> *bodies);
+
     int totnConstEq(std::vector<Constraint*> *c);
 
 

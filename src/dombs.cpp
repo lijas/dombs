@@ -188,6 +188,18 @@ namespace dombs
         return pv;
     }
 
+    vec getqq(vector<Body*> *bodies){
+//        nbdoies*DOFS_PER_BODY kanske kan bytas ut mot ndofs för ndofs är global
+        int nbodies = bodies->size();
+        double *qqdouble = new double[nbodies*DOFS_PER_BODY];
+        for(int i=0; i<bodies->size(); i++){
+            double *dd = bodies->at(i)->getq().memptr();
+            std::copy(dd,dd+DOFS_PER_BODY,qqdouble +(i*DOFS_PER_BODY));
+        }
+        vec finalqq(qqdouble,nbodies*DOFS_PER_BODY, false);
+        return finalqq;
+    }
+
 }
 
 

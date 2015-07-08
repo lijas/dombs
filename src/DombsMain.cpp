@@ -21,6 +21,7 @@ namespace dombsmain{
 
      unsigned int nbodies, nconstraints, ndofs, nindepC, ndepC;
 
+     arma::vec all_qq;
 
     void initilize(string infileName){
 
@@ -70,6 +71,8 @@ namespace dombsmain{
         nindepC = 3;
         ndepC = 4;
 
+        all_qq = dombs::getqq(&bodies);
+
         solver = new Ode4;
         solver->setTimeSpan(0,1);
         solver->setnsteps(1000);
@@ -80,8 +83,9 @@ namespace dombsmain{
         solver->runSolver(dombsfunk);
     }
 
-    vec dombsfunk(vec q, double t){
-        Constraint *ccc = constraints.at(0);
+    vec dombsfunk(vec qin, double t){
+
+
 
         mat Cq = dombs::assembleCqMatrix(&constraints, ndofs);
         Cq.print("Cq");
@@ -94,7 +98,7 @@ namespace dombsmain{
         uvec p = dombs::permutation2vec(P);
 
         uvec depC = p.head(ndepC-1);
-        uvec indepC = p.tail(ndepC - ndofs-1);
+        uvec indepC = p.tail(nindepC);
 
         double tol = 0.00001;
         double normC = norm(C);
@@ -104,7 +108,7 @@ namespace dombsmain{
 
         }
 
-        return q;
+        return qin;
     }
 
 }
