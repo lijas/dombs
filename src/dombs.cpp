@@ -43,7 +43,7 @@ namespace dombs
             E0(0,1) = 1; E0(1,2) = 1; E0(2,3) = 1;
             Ebar0(0,1) = 1; Ebar0(1,2) = 1; Ebar0(2,3) = 1;
 
-            mat Ader0 = E0*Ebar0.t() + E0*Ebar0.t();
+            mat Ader0 = E0*Ebar.t() + E*Ebar0.t();
             return Ader0;
         }
         else if (derivative == 1){
@@ -53,7 +53,7 @@ namespace dombs
             E1(0,0) = -1; E1(2,2) = 1; E1(1,3) = -1;
             Ebar1(0,0) = -1; Ebar1(2,2) = -1; Ebar1(1,3) = 1;
 
-            mat Ader1 = E1*Ebar1.t() + E1*Ebar1.t();
+            mat Ader1 = E1*Ebar.t() + E*Ebar1.t();
             return Ader1;
         }
         else if (derivative == 2){
@@ -63,7 +63,7 @@ namespace dombs
             E2(1,0) = -1; E2(2,1) = -1; E2(0,3) = 1;
             Ebar2(1,0) = -1; Ebar2(2,1) = 1; Ebar2(0,3) = -1;
 
-            mat Ader2 = E2*Ebar2.t() + E2*Ebar2.t();
+            mat Ader2 = E2*Ebar.t() + E*Ebar2.t();
             return Ader2;
         }
         else if (derivative == 3){
@@ -73,7 +73,7 @@ namespace dombs
             E3(2,0) = -1; E3(1,1) = 1; E3(0,2) = -1;
             Ebar3(2,0) = -1; Ebar3(1,1) = -1; Ebar3(0,2) = 1;
 
-            mat Ader3 = E3*Ebar3.t() + E3*Ebar3.t();
+            mat Ader3 = E3*Ebar.t() + E*Ebar3.t();
             return Ader3;
         }
     };

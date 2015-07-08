@@ -5,8 +5,8 @@
 #include <Body.h>
 #include <Constraint.h>
 
-namespace dombs
-{
+namespace dombs{
+
     int const DOFS_PER_BODY = 7;
     arma::mat getA(arma::vec EulerParameters); // regular rotation matrix
     arma::mat getA(arma::vec EulerParameters, int derivative); // derivative of the rotation matrix
