@@ -6,8 +6,9 @@
 #include <Body.h>
 #include <Constraint.h>
 #include <Solver.h>
+#include <armadillo>
 
-namespace dombsmain {
+namespace dombs{
 
     //Store the inputfile name
     extern std::string inputfileName;
@@ -18,9 +19,12 @@ namespace dombsmain {
     //A solver that points to the current solver that is used, ode4, ode3 etc
     extern Solver *solver;
     //Some variables that I think we can init when reading the input file. They will probobly not change
-    extern unsigned int nbodies, nconstraints, ndofs, nindepC, ndepC;
+    extern unsigned int nbodies, nconstraints, ndofs, nindepC, ndepC, nconsteq;
     //
     extern arma::vec all_qq;
+    extern arma::vec all_dqq;
+    //
+    extern arma::vec gravityDir;
 
     //The main functions that is called from main.cpp
     void initilize(std::string fileName);

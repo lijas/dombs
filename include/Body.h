@@ -9,12 +9,11 @@ public:
 	Body();
 	//Assigns a id to the body
 	Body(int iid);
-	//Should not be used because does not set id
-	Body(arma::vec iq, arma::vec idq);
-	Body(int iid, arma::vec iq, arma::vec idq);
+	Body(int iid, arma::vec *iq, arma::vec *idq);
 
     //Sets the coords of the body, assumably the initial conditions
-	void setCoords(arma::vec iq);
+	void setq(arma::vec *iq){q = iq;};
+	void setdq(arma::vec *idq){dq = idq;};
 	//Sets the id of the body, should be done when reading the input
     void setId(int ii){id = ii; evalDofs();};
 
@@ -26,10 +25,14 @@ public:
     arma::mat getMomentInertia(){return momentInertia;};
 
     //Returns pos and ep etc
-    arma::vec getq(){return q;};
-    arma::vec getdq(){return dq;};
-    arma::vec getPos(){return q.rows(0,2);};
-    arma::vec getep(){return q.rows(3,6);};
+    arma::vec* getq(){return q;};
+    arma::vec* getdq(){return dq;};
+
+    arma::vec getVel(){return dq->rows(0,2);};
+    arma::vec getdep(){return dq->rows(3,6);};
+
+    arma::vec getPos(){return q->rows(0,2);};
+    arma::vec getep(){return q->rows(3,6);};
 
     //Returns the dofs for ep and pos etc
     arma::uvec getdofs(){return dofs;};
@@ -47,8 +50,8 @@ private:
 
     int id;
 
-    arma::vec q;
-	arma::vec dq;
+    arma::vec *q;
+	arma::vec *dq;
 
 	arma::uvec dofs;
 	arma::uvec posdofs;

@@ -1,8 +1,11 @@
 #include <dombs.h>
 #include <Body.h>
+#include <DombsMain.h>
+#include <RotationMatrix.h>
 
 using namespace std;
 using namespace arma;
+using namespace dombs;
 
 namespace dombs{
 
@@ -16,7 +19,6 @@ namespace dombs{
         for(int i=0; i<nconstraints; i++){
             Constraint *cconst = constraints->at(i);
             mat cq = cconst->getCq();
-            cq.print("cq:");
 
             uvec assemCols = cconst->getAssemDofs();
             uvec assemRows = colon(cCqRow, cCqRow + cconst->getnCqRows() - 1);
@@ -64,6 +66,30 @@ namespace dombs{
         return bodiesMassMatrix;
     }
 
+    vec assembleQc(){}
+
+    vec assembleQv(){
+        vec full_Qv(ndofs);
+        for(int i=0; i<bodies.size(); i++){
+            Body *b = bodies.at(i);
+
+            vec wbar = getG(b->getep())*b->getdep();
+            vec body_Qv = join_horiz(zeros<rowvec>(3), -2*wbar.t()*b->getMomentInertia()*getG(b->getdep())).t();
+
+            full_Qv.rows(DOFS_PER_BODY *(i), (DOFS_PER_BODY *(i+1)) - 1) = body_Qv;
+        }
+        return full_Qv;
+    }
+
+    vec assembleQg(){
+        vec body_Qg = join_vert(gravityDir, zeros<vec>(4));
+        vec full_Qg(ndofs);
+        for(int i=0; i<bodies.size(); i++){
+            full_Qg.rows(DOFS_PER_BODY *(i), (DOFS_PER_BODY *(i+1)) - 1) = body_Qg;
+        }
+        return full_Qg;
+    }
+
     uvec getElemVec(vec v1, vec v2, int nmatrows){
 
         uvec indices(v1.n_elem*v2.n_elem);
@@ -104,16 +130,28 @@ namespace dombs{
         return pv;
     }
 
-    vec getqq(vector<Body*> *bodies){
+    vec getqq(){
 //        nbdoies*DOFS_PER_BODY kanske kan bytas ut mot ndofs för ndofs är global
-        int nbodies = bodies->size();
-        double *qqdouble = new double[nbodies*DOFS_PER_BODY];
-        for(int i=0; i<bodies->size(); i++){
-            double *dd = bodies->at(i)->getq().memptr();
-            std::copy(dd,dd+DOFS_PER_BODY,qqdouble +(i*DOFS_PER_BODY));
-        }
-        vec finalqq(qqdouble,nbodies*DOFS_PER_BODY, false);
-        return finalqq;
+//        int nbodies = bodies.size();
+//        double *qqdouble = new double[nbodies*DOFS_PER_BODY];
+//        for(int i=0; i<bodies.size(); i++){
+//            double *dd = bodies.at(i)->getq().memptr();
+//            std::copy(dd,dd+DOFS_PER_BODY,qqdouble +(i*DOFS_PER_BODY));
+//        }
+//        vec finalqq(qqdouble,nbodies*DOFS_PER_BODY, false);
+//        return finalqq;
+    }
+
+    vec getdqq(){
+//        nbdoies*DOFS_PER_BODY kanske kan bytas ut mot ndofs för ndofs är global
+//        int nbodies = bodies.size();
+//        double *qqdouble = new double[nbodies*DOFS_PER_BODY];
+//        for(int i=0; i<bodies.size(); i++){
+//            double *dd = bodies.at(i)->getdq().memptr();
+//            std::copy(dd,dd+DOFS_PER_BODY,qqdouble +(i*DOFS_PER_BODY));
+//        }
+//        vec finalqq(qqdouble,nbodies*DOFS_PER_BODY, false);
+//        return finalqq;
     }
 
 }

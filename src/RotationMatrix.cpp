@@ -1,4 +1,4 @@
-#include "RotationMatrix.h"
+#include <RotationMatrix.h>
 
 using namespace arma;
 

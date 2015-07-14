@@ -1,5 +1,6 @@
 #include <FixBallJoint.h>
 #include <dombs.h>
+#include <RotationMatrix.h>
 
 using namespace std;
 using namespace arma;

@@ -26,7 +26,7 @@ void Ode4::runSolver(vec (*f)(vec q, double t)){
     mat F = zeros<mat>(neq,4);
 
     Y.col(0) = initialCondition;
-    for(int i=1; i<=nsteps; i++){
+    for(int i=1; i<=nsteps-1; i++){ //ska det vara minus 1? annars blir det fel på raden: double hi = tspan(i)...
       double ti = tspan(i-1);
       double hi = tspan(i) - tspan(i-1);
       vec yi = Y.col(i-1);
@@ -37,6 +37,8 @@ void Ode4::runSolver(vec (*f)(vec q, double t)){
       F.col(3) = f(yi + hi*F.col(2), ti + hi);
 
       Y.col(i) = yi + (hi/6)*(F.col(0) + 2*F.col(1) + 2*F.col(2) + F.col(3));
+      cout<<"Step: "<< i << "/"<< nsteps <<endl;
     }
-
+    cout<<"exit ode4"<<endl;
+    Y.save("Y.txt",raw_ascii);
 }

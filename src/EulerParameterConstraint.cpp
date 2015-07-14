@@ -1,4 +1,5 @@
 #include "EulerParameterConstraint.h"
+#include <RotationMatrix.h>
 
 using namespace std;
 using namespace arma;

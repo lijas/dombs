@@ -14,6 +14,9 @@ namespace dombs{
     arma::mat assembleBodyMassMatrix(std::vector<Body*> *bodies);
     arma::mat assembleCqMatrix(std::vector<Constraint*> *constraints, int ndofs);
     arma::vec assembleCMatrix(std::vector<Constraint*> *constraints);
+    arma::vec assembleQc();
+    arma::vec assembleQv();
+    arma::vec assembleQg();
 
     //---Help functions
     //Returns the element-positions specified by v1 and v2 in a columnvector. Used for assembling
@@ -23,7 +26,8 @@ namespace dombs{
     //Makes the permuation matrix from lu-factorisation in to a vector
     arma::uvec permutation2vec(arma::mat p);
     //Calculates the total number of constraints equaitons
-    arma::vec getqq(std::vector<Body*> *bodies);
+    arma::vec getqq();
+    arma::vec getdqq();
 
     int totnConstEq(std::vector<Constraint*> *c);
 

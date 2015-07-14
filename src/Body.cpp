@@ -4,10 +4,10 @@
 using namespace arma;
 
 Body::Body(){
-	q = vec(7);
-	dq = vec(7);
-	q.zeros();
-	dq.zeros();
+	q = new vec(7);
+	dq = new vec(7);
+	q->zeros();
+	dq->zeros();
 
 	density = 1;
 	evalMassAndMomentInertia();
@@ -16,10 +16,10 @@ Body::Body(){
 }
 
 Body::Body(int iid){
-    q = vec(7);
-	dq = vec(7);
-	q.zeros();
-	dq.zeros();
+	q = new vec(7);
+	dq = new vec(7);
+	q->zeros();
+	dq->zeros();
 
     density = 1;
 	evalMassAndMomentInertia();
@@ -28,7 +28,7 @@ Body::Body(int iid){
 	evalDofs();
 }
 
-Body::Body(int iid, vec iq, vec idq){
+Body::Body(int iid, vec *iq, vec *idq){
 	q = iq;
 	dq = idq;
 
@@ -44,12 +44,8 @@ Body::Body(int iid, vec iq, vec idq){
 void Body::evalMassAndMomentInertia(){
     //Calculate momentinerta and mass using the density and shape
     //Set to 1 for now
-    mass = 1;
-    momentInertia = eye<mat>(3,3);
-}
-
-void Body::setCoords(vec iq){
-    this->q = iq;
+    mass = 0.1;
+    momentInertia = eye<mat>(3,3) * 1/12*mass*0.01*0.01;
 }
 
 void Body::setDensity(double d){
